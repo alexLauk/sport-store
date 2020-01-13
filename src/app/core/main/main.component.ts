@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { ProductService, Product } from 'src/app/projects/services/product.service';
+import { EventEmitter } from 'events';
 
 
 @Component({
@@ -9,9 +10,11 @@ import { ProductService, Product } from 'src/app/projects/services/product.servi
 })
 export class MainComponent implements OnInit {
 
-  public productList: Product[] = [] ;
+  // tslint:disable-next-line: no-output-on-prefix
+  @Output() onAdd: EventEmitter<Product> = new EventEmitter<Product>();
   public categories: Set<string> | string[] = [];
-  public currentCutegory: string = '';
+  public categoryList = [];
+  public products = [];
 
 
   constructor(private productService: ProductService) { }
@@ -22,14 +25,29 @@ export class MainComponent implements OnInit {
 
   public getProducts() {
     this.productService.getProducts().subscribe((products: Product[]) => {
-      this.productList = products;
-      const allCats = this.productList.map((product) => product.category);
+      this.products = products;
+      const allCats = this.products.map((product) => product.category);
+      allCats.unshift('All');
       this.categories = new Set(allCats);
     });
   }
 
-  public getProductList(): Product[] {
-    return this.productList.filter((product) => product.category === this.currentCutegory);
+  public filterCategories(event, currentCategory) {
+
+    console.log(event);
+    if (event.checked) {
+      this.categoryList.push(currentCategory);
+      console.log(this.categoryList);
+    } else {
+      this.categoryList.splice(this.categoryList.indexOf(currentCategory), 1);
+      console.log(this.categoryList);
+    }
+
+    if (currentCategory !== 'All') {
+       this.products.filter(product => this.categoryList.indexOf(product.category) !== -1);
+    }
+
+    return this.onAdd.emit(this.products);
   }
 
 
