@@ -1,0 +1,35 @@
+<div class="container-fluid pt-2">
+    <div class="row">
+        <div class="col-2 mt-4">
+            <select class="browser-default custom-select">
+                <option selected>All</option>
+                <option *ngFor="let item of categories"
+                    value="1">{{item}}</option>
+              </select>
+        </div>
+        <div class="col-10">
+            <div class="row">
+                <div *ngFor="let product of productList"
+                    class="col-lg-3 col-md-4 col-6 mt-4">
+                    <mdb-card class="h-100">
+                        <!--Card content-->
+                        <mdb-card-body>
+
+                          <!--Title-->
+                          <mdb-card-title>
+                            <h4>{{product.name}}</h4>
+                          </mdb-card-title>
+
+                          <!--Text-->
+                          <mdb-card-text>{{product.description}}
+                          </mdb-card-text>
+                          <h3><mdb-badge color="red">{{product.price | currency}}</mdb-badge></h3>
+
+                          <a href="#"  type="button" mdbBtn color="dark" mdbWavesEffect>Add to Card</a>
+                        </mdb-card-body>
+                    </mdb-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
