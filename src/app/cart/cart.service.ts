@@ -17,6 +17,11 @@ export class CartService {
     return this.productLines;
   }
 
+  deleteLine(id: number) {
+    this.productLines = this.productLines.filter((line: Line) => line.id !== id) 
+  }
+
+
   addProductLine(product: Product) {
     const line = new Line(
       product.name,
@@ -34,11 +39,11 @@ export class CartService {
     return this.total;
   }
 
-  private calculateSubTotal(quantity, price): number {
+  public calculateSubTotal(quantity, price): number {
     return price * quantity;
   }
 
-  private calculateTotal(): number {
+  public calculateTotal(): number {
     return this.productLines.map(line => line.subtotal).reduce((sum, current) => sum + current, 0);
   }
 }

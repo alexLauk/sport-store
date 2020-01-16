@@ -14,20 +14,21 @@
         </tr>
     </tfoot>
     <tbody>
-      <tr mdbTableCol *ngFor="let el of list">
-        <th scope="row">{{el.quantity}}</th>
-        <td>{{el.name}}</td>
-        <td>{{el.price | currency}}</td>
-        <td>{{el.subtotal | currency}}</td>
+      <tr mdbTableCol *ngFor="let product of list">
+        <th scope="row">{{product.quantity}}</th>
+        <td>{{product.name}}</td>
+        <td>{{product.price | currency}}</td>
+        <td>{{product.subtotal | currency}}</td>
         <td>
-            <button mdbBtn type="button" color="danger" outline="true" mdbWavesEffect>Remove</button>
+            <button (click)="deleteLine(product.id)"
+            mdbBtn type="button" color="danger" outline="true" mdbWavesEffect>Remove</button>
         </td>
       </tr>
     </tbody>
 </table>
 <div class="d-flex justify-content-center">
     <div class="btn-group d-flex" role="group" aria-label="Basic example">
-        <button mdbBtn type="button" color="primary" class="waves-light" outline="true" mdbWavesEffect>End Shopping</button>
+        <button (click)="backToHome()" mdbBtn type="button" color="primary" class="waves-light" outline="true" mdbWavesEffect>End Shopping</button>
         <button mdbBtn type="button" color="primary" class="waves-light" outline="true" mdbWavesEffect>Checkout</button>
     </div>
 </div>
