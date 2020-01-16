@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
+import { CartModule } from './cart/cart.module';
+import { ChekoutModule } from './chekout/chekout.module';
 
 
 @NgModule({
@@ -20,6 +22,8 @@ import { CoreModule } from './core/core.module';
     ReactiveFormsModule,
     HttpClientModule,
     CoreModule,
+    CartModule,
+    ChekoutModule
 
 
   ],

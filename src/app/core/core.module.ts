@@ -27,7 +27,7 @@ import { HomeComponent } from './home/home.component';
     CardsModule,
     ButtonsModule,
     CheckboxModule,
-    BadgeModule
+    BadgeModule,
   ],
   declarations: [
     HeaderComponent,

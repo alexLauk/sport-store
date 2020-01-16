@@ -31,10 +31,10 @@ export class ProductService {
     return this.http.delete<void>(`http://localhost:3000/products/${id}`);
   } */
 
-  /* public addProduct(body: Product): Observable<void> {
+ /* public addToCart(product: Product): Observable<void> {
     return this.http.post<void>(`http://localhost:3000/products`, body);
-  } */
-
+  } 
+ */
   /* public editProduct(body: Product): Observable<void> {
     return this.http.put<void>(`http://localhost:3000/product/${body.id}`, body);
   } */
