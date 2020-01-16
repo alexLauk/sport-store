@@ -9,11 +9,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CoreModule } from './core/core.module';
 import { CartModule } from './cart/cart.module';
 import { ChekoutModule } from './chekout/chekout.module';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

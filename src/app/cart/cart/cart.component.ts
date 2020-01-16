@@ -3,6 +3,8 @@ import { Product, ProductService } from 'src/app/projects/services/product.servi
 import { CartService } from '../cart.service';
 import { Line } from 'src/app/projects/model/line.model';
 import { Router } from '@angular/router';
+import { MDBModalService, MDBModalRef } from 'angular-bootstrap-md';
+import { ChekoutComponent } from 'src/app/chekout/chekout/chekout.component';
 
 @Component({
   selector: 'app-cart',
@@ -12,10 +14,12 @@ import { Router } from '@angular/router';
 export class CartComponent implements OnInit {
 
   list: Line[] =[];
+  modalRef: MDBModalRef;
 
   constructor(
     public cartService: CartService,
-    private router: Router  
+    private router: Router,
+    private modalService: MDBModalService
   ) { }
 
   ngOnInit() {
@@ -25,6 +29,10 @@ export class CartComponent implements OnInit {
 
   backToHome() {
     this.router.navigate(['/']);
+  }
+
+  openModal() {
+    this.modalRef = this.modalService.show(ChekoutComponent)
   }
 
   deleteLine(id) {

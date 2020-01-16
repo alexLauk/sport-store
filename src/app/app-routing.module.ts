@@ -7,6 +7,7 @@ import { CartComponent } from './cart/cart/cart.component';
 
 const routes: Routes = [
   {path: '', component: MainComponent},
+  {path: 'home', component: MainComponent},
   {path: 'cart', component: CartComponent},
   {path: '**', redirectTo: '/'},
   
